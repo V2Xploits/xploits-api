@@ -68,12 +68,14 @@ local function bumtdz(czaagn)local _=27 end local bedwyo=69 local function nzahh
   return res.send(lua)
 })
  
+const fs = require('fs')
+const path = require('path')
+
 app.get('/loader', async (req, res) => {
-  const lua = `-- Main script loaded after key validation
-print("Script loaded successfully!")
- 
--- Put your actual script here
-`
+  const lua = fs.readFileSync(path.join(__dirname, 'loader.lua'), 'utf8')
+  res.setHeader('Content-Type', 'text/plain')
+  return res.send(lua)
+})
  
   res.setHeader('Content-Type', 'text/plain')
   return res.send(lua)
