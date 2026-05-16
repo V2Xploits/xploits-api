@@ -67,15 +67,7 @@ app.get('/script', async (req, res) => {
 --   Do NOT share this with anyone.
 -- =======================================
  
-local script_key = "${key}"
- 
--- Validate key before running
-local status = game:HttpGet("${BASE_URL}/checkkey?key=" .. script_key)
-if status ~= "valid" then
-    return warn("[Loader] Your key is " .. status .. ". Please contact support.")
-end
- 
--- Load the main script
+script_key = "${key}"
 loadstring(game:HttpGet("${BASE_URL}/loader"))()
 `
  
